@@ -10,7 +10,7 @@
 <!-- default file list end -->
 # How to change the current Culture in ASP.NET MVC Application using ComboBox Extension
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t108173)**
+**[[Run Online]](https://codecentral.devexpress.com/t108173/)**
 <!-- run online end -->
 
 
