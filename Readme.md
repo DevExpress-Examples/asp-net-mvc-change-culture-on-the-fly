@@ -5,9 +5,6 @@
 <!-- default badges end -->
 
 # ASP.NET MVC - How to use the ComboBox extension to change the current culture
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/128566207/)**
-<!-- run online end -->
 
 This example demonstrates how to use the [ComboBox](https://docs.devexpress.com/AspNetMvc/8984/components/data-editors-extensions/combobox) extension to implement the capability to apply different cultures in an ASP.NET MVC Application on the fly. For more informarion and implementation details, refer to the following article: [Best practices to change the current Culture in ASP.NET MVC Application using ComboBox Extension](https://supportcenter.devexpress.com/ticket/details/t108044/best-practices-to-change-the-current-culture-in-asp-net-mvc-application-using-combobox)
 
