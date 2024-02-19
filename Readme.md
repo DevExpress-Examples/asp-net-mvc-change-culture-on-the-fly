@@ -5,15 +5,15 @@
 
 # ASP.NET MVC - How to change the current culture at runtime
 
-This example demonstrates how to use DevExpress [ComboBox](https://docs.devexpress.com/AspNetMvc/8984/components/data-editors-extensions/combobox) extension to change an application culture on the fly. When a user selects an item, the extension sends a request to the server to change the culture.  Between requests the combobox value is stored in cookies.
+This example demonstrates how to use the DevExpress [ComboBox](https://docs.devexpress.com/AspNetMvc/8984/components/data-editors-extensions/combobox) extension to change an application's culture on the fly. When a user selects an item, the extension sends a request to the server to change the culture.  Between requests, the combo box value is stored in cookies.
 
 ## Implementation Details
 
 ### 1. Add and set up a ComboBox extension.
 
-Wrap the ComboBox extension into the [HTML Form](https://www.w3schools.com/html/html_forms.asp) element to submit the form and send a request to the server when the selected item is changed. 
+Wrap the ComboBox extension in the [HTML Form](https://www.w3schools.com/html/html_forms.asp) element to submit the form and send a request to the server when the selected item is changed. 
 
-Handle the extension's client events to save and restore current culture (selected item) in cookies.
+Handle the extension's client events to save and restore the current culture (selected item) in cookies.
 
 ```cs  
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form" })) {  
@@ -42,7 +42,7 @@ function SelectedIndexChanged(s) {
 }
 ```
 
-### 2. Change an application culture at runtime.
+### 2. Change the application culture at runtime.
 
 Specify [Thread.CurrentCulture](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.currentculture) and [Thread.CurrentUICulture](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.currentuiculture) properties in the [HttpApplication.AcquireRequestState](https://learn.microsoft.com/en-us/dotnet/api/system.web.httpapplication.acquirerequeststate) to apply a culture in an ASP.NET MVC Application at runtime.
 
