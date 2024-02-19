@@ -44,7 +44,7 @@ function SelectedIndexChanged(s) {
 
 ### 2. Change an application culture at runtime.
 
-Specify [Thread.CurrentCulture](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.currentculture) and [Thread.CurrentUICulture](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.currentuiculture) properties in the [HttpApplication.AcquireRequestState](https://learn.microsoft.com/en-us/dotnet/api/system.web.httpapplication.acquirerequeststate) to set a culture in an ASP.NET MVC Application at runtime.
+Specify [Thread.CurrentCulture](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.currentculture) and [Thread.CurrentUICulture](https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.currentuiculture) properties in the [HttpApplication.AcquireRequestState](https://learn.microsoft.com/en-us/dotnet/api/system.web.httpapplication.acquirerequeststate) to apply a culture in an ASP.NET MVC Application at runtime.
 
 ```cs  
 protected void Application_AcquireRequestState(object sender, EventArgs e) {  
@@ -59,33 +59,29 @@ protected void Application_AcquireRequestState(object sender, EventArgs e) {
 
 ### 3. Build a multi-language UI in the application.
 
-Use satellite resource assemblies to localize DevExpress MVC Extensions. This technique is described in detail in the following document and is not covered in this example: [Satellite Resource Assemblies](https://docs.devexpress.com/AspNet/12050/common-concepts/localization/satellite-resource-assemblies).
-
-This example demonstrates how to localize your custom UI elements on top of our MVC Extensions.
+Use satellite resource assemblies to localize DevExpress MVC Extensions. This technique is described in detail in the following document and is not covered in this example: [Satellite Resource Assemblies](https://docs.devexpress.com/AspNet/12050/common-concepts/localization/satellite-resource-assemblies). This example demonstrates how to localize your custom UI elements on top of our MVC Extensions.
 
 #### 3.1 Provide localized strings.
 
-Create custom [Resource Files](https://learn.microsoft.com/en-us/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc296240(v=vs.95)) for different culture and populate them with static resource strings. 
+Create custom [Resource Files](https://learn.microsoft.com/en-us/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc296240(v=vs.95)) for different cultures and populate them with static resource strings. In this example, we created the following resources files:
 
-In this example, we created the following resources files:
+* [LocalizationText.resx](./CS/Localization/Content/LocalizationText.resx) - the default resource file.
+* [LocalizationText.en-US.resx](./CS/Localization/Content/LocalizationText.en-US.resx) contains English resource strings.
+* [LocalizationText.de-DE.resx](./CS/Localization/Content/LocalizationText.de-DE.resx) contains German resource strings.
 
-* [LocalizationText.resx](./CS/Localization/Content/LocalizationText.resx) - the default file.
-* [LocalizationText.en-US.resx](./CS/Localization/Content/LocalizationText.en-US.resx) - the English language.
-* [LocalizationText.de-DE.resx](./CS/Localization/Content/LocalizationText.de-DE.resx) - the German language.
-
-The resource strings maintained in the files can be accessed at runtime as the `LocalizationText` class static properties.
+The resource strings maintained in the files can be accessed at runtime as properties of the `LocalizationText` class.
 
 #### 3.2 Display localized strings in UI elements.
 
 This section lists examples how to display the localized strings in the following UI elements:
 
-* Localize a page title.
+* A page title.
 
     ```cs  
     <h2>@LocalizationText.HomePageTitle</h2>  
     ```  
 
-* Custom items in DevExpress [Menu extension](https://docs.devexpress.com/AspNetMvc/8968/components/site-navigation-and-layout/menu):  
+* Custom items in DevExpress [Menu](https://docs.devexpress.com/AspNetMvc/8968/components/site-navigation-and-layout/menu) extension:  
   
     ```cs  
     @Html.DevExpress().Menu(  
@@ -113,12 +109,12 @@ This section lists examples how to display the localized strings in the followin
     }).Bind(Model.Name).GetHtml()  
     ```  
 
-Configure the `Required` attribute to load the validation message from the custom resource file string. 
-
-```cs
-[Required(ErrorMessageResourceName = "RequiredValidationMessage", ErrorMessageResourceType = typeof(LocalizationText))]
-public string Name { get; set; }
-```
+    Configure the `Required` field attribute to load the validation message from the custom resource file string. 
+    
+    ```cs
+    [Required(ErrorMessageResourceName = "RequiredValidationMessage", ErrorMessageResourceType = typeof(LocalizationText))]
+    public string Name { get; set; }
+    ```
 
 ## Files to Review
 
